@@ -16,8 +16,8 @@ There is also a `/report-only` twin that sends the same policy as
 ## Run it
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open the URL printed by Next.js (http://localhost:3000 unless the port is in
@@ -26,8 +26,8 @@ use).
 Then open `/report-only` from the link in the top bar.
 
 ```bash
-npm run build
-npm start
+pnpm build
+pnpm start
 ```
 
 ## What is going on
