@@ -43,7 +43,13 @@ export default async function Demo({ mode }: { mode: Mode }) {
             <span className="live-dot" aria-hidden="true" />
             report endpoint <code>/api/csp-report</code>
           </span>
-          <Link className="switch-link" href={reportOnly ? "/" : "/report-only"}>
+          <Link className="switch-link" href="/docs">
+            Docs
+          </Link>
+          <Link
+            className="switch-link"
+            href={reportOnly ? "/enforced" : "/report-only"}
+          >
             {reportOnly ? "See the enforced page" : "See the report-only twin"}
           </Link>
         </div>

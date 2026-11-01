@@ -14,9 +14,9 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CSP Lab — a policy that reports on itself",
+  title: "CSP Lab Manager",
   description:
-    "A live Content Security Policy demo: strict enforcement, deliberate violations, and report-uri delivery to the app's own endpoint.",
+    "Self-hosted console for Content Security Policy report-uri reports. Deploy with Docker Compose, Postgres, and Valkey.",
 };
 
 export default function RootLayout({

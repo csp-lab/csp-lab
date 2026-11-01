@@ -21,9 +21,8 @@ pnpm dev
 ```
 
 Open the URL printed by Next.js (http://localhost:3000 unless the port is in
-use).
-
-Then open `/report-only` from the link in the top bar.
+use). `/` is the CSP Lab Manager project page. The enforced demo is at
+`/enforced`, and `/report-only` is linked from that page's top bar.
 
 ```bash
 pnpm build
@@ -121,6 +120,10 @@ and no certificate setup.
 | `lib/csp.ts` | Single source of truth for the directives |
 | `lib/reports.ts` | Report normalisation and in-memory store |
 | `app/api/csp-report/route.ts` | The app's own report endpoint (POST/GET/DELETE) |
+| `app/page.tsx` | CSP Lab Manager landing page |
+| `app/docs/page.tsx` | Manager documentation |
+| `app/enforced/page.tsx` | Enforced demo |
+| `app/components/site-header.tsx` | Header on the landing page and the docs |
 | `app/components/demo.tsx` | Page shell, policy viewer, deliberately broken markup |
 | `app/components/test-bench.tsx` | Interactive violation triggers and per-test status |
 | `app/components/report-feed.tsx` | Live report feed |
