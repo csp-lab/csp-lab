@@ -43,6 +43,8 @@ Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-…' 'stri
 Next.js reads the nonce from the request's CSP header and stamps its own script
 tags with it. Raw inline scripts, scripts without a nonce, remote images,
 cross-origin frames, and outbound `fetch` calls are refused by the browser.
+The home page also allows `https://www.youtube-nocookie.com` in `frame-src`
+so the walkthrough can play. `/enforced` and `/report-only` do not.
 
 `report-uri` is the legacy reporting channel, but every major browser still
 supports it and it works over both HTTP and HTTPS. That makes the demo work

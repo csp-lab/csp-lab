@@ -99,8 +99,18 @@ export function getDirectives(nonce: string, dev: boolean): CspDirective[] {
  * report-to delivery for CSP reports is unreliable, so this demo advertises
  * report-uri only.
  */
-export function buildCsp(nonce: string, dev: boolean): string {
+export function buildCsp(
+  nonce: string,
+  dev: boolean,
+  allowDemoPlayer = false,
+): string {
   return getDirectives(nonce, dev)
-    .map((directive) => `${directive.name} ${directive.value}`)
+    .map((directive) => {
+      const value =
+        allowDemoPlayer && directive.name === "frame-src"
+          ? `${directive.value} https://www.youtube-nocookie.com`
+          : directive.value;
+      return `${directive.name} ${value}`;
+    })
     .join("; ");
 }

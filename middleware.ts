@@ -19,7 +19,8 @@ function createNonce(): string {
 export function middleware(request: NextRequest) {
   const nonce = createNonce();
   const dev = process.env.NODE_ENV !== "production";
-  const policy = buildCsp(nonce, dev);
+  // Home embeds the walkthrough. Lab pages stay frame-src 'self'.
+  const policy = buildCsp(nonce, dev, request.nextUrl.pathname === "/");
   const isReportOnly = request.nextUrl.pathname.startsWith("/report-only");
   const responseHeader = isReportOnly
     ? "Content-Security-Policy-Report-Only"

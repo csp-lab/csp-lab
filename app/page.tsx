@@ -61,6 +61,19 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="manager-demo" aria-labelledby="demo-heading">
+          <h2 id="demo-heading">Watch the console</h2>
+          <div className="manager-player">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/mdaTi4ZxMe0"
+              title="CSP Lab Manager video demonstration"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+        </section>
+
         <section className="service-row" aria-label="Containers">
           <article className="service">
             <h2>Postgres</h2>

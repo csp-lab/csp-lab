@@ -1051,6 +1051,26 @@ button {
   white-space: nowrap;
 }
 
+.manager-demo {
+  padding: clamp(28px, 4vw, 40px) 0 clamp(36px, 5vw, 52px);
+  border-top: 1px solid var(--ink);
+}
+
+.manager-player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line-strong);
+  background: var(--code-bg);
+}
+
+.manager-player iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .service-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1088,6 +1108,7 @@ button {
   border-top: 1px solid var(--ink);
 }
 
+.manager-demo h2,
 .manager-steps h2,
 .manager-close h2 {
   margin: 0 0 16px;
