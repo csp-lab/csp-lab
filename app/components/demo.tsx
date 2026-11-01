@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { getDirectives } from "@/lib/csp";
@@ -5,6 +6,37 @@ import TestBench from "./test-bench";
 import ReportFeed from "./report-feed";
 
 type Mode = "enforce" | "report-only";
+
+/**
+ * CSP is fixed to the document. A client navigation keeps the policy from
+ * the page that was actually loaded, so crossing into or out of report-only
+ * has to be a full load or img-src and the rest stay on the old disposition.
+ */
+function PolicyLink({
+  href,
+  className,
+  children,
+  reload,
+}: {
+  href: string;
+  className: string;
+  children: ReactNode;
+  reload: boolean;
+}) {
+  if (reload) {
+    return (
+      <a className={className} href={href}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link className={className} href={href}>
+      {children}
+    </Link>
+  );
+}
 
 const IMAGE_URL = "https://picsum.photos/seed/csp-lab/720/420";
 const FRAME_URL = "https://example.org";
@@ -34,24 +66,25 @@ export default async function Demo({ mode }: { mode: Mode }) {
       <script src="https://code.jquery.com/jquery-3.7.1.min.js" async />
 
       <header className="topbar">
-        <Link href="/" className="wordmark">
+        <PolicyLink href="/" className="wordmark" reload={reportOnly}>
           <span className="wordmark-mark" aria-hidden="true" />
           CSP Lab
-        </Link>
+        </PolicyLink>
         <div className="topbar-right">
           <span className="endpoint-chip">
             <span className="live-dot" aria-hidden="true" />
             report endpoint <code>/api/csp-report</code>
           </span>
-          <Link className="switch-link" href="/docs">
+          <PolicyLink className="switch-link" href="/docs" reload={reportOnly}>
             Docs
-          </Link>
-          <Link
+          </PolicyLink>
+          <PolicyLink
             className="switch-link"
             href={reportOnly ? "/enforced" : "/report-only"}
+            reload
           >
             {reportOnly ? "See the enforced page" : "See the report-only twin"}
-          </Link>
+          </PolicyLink>
         </div>
       </header>
 
