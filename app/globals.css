@@ -114,7 +114,8 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 6px 11px;
+  padding: 2px 11px;
+  line-height: 1;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--panel);
